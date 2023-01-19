@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- <script src="jquery-3.6.1.min.js"></script> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Url</title>
+    <style>
+        body{
+            background-color: rgba(0, 128, 0, 0.3);
+        }
+        .box{
+            /* visibility: hidden; */
+            border-bottom: 2px solid red;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-position: 10px 10px; 
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+}
+    label {
+    cursor: default;
+    font-size: large;
+    font-weight: 200;
+    }      
+    #button{
+        background-color: rgb(255, 255, 255);
+        color: black;
+        border: 2px solid #4CAF50; /* Green */
+        height:40px;
+        width:80px;
+        border-radius: 13px;
+    }  
+    #button:hover{
+        color:rgb(201, 74, 24);
+        background-color:rgb(180, 167, 237) ;
+       
+    }
+#openlinks{
+    background-color: aliceblue;
+}
+
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+
+    <label for="source url">Source Url:-</label>
+    <input type="url" name="surl" placeholder="Enter Source url.........." id="box1" class="box"><br><br>
+    <label for='targeted url'>Target Url:-</label>
+    <input type="url" name="turl" placeholder="Enter targeted url......." id="box2" class="box"><br><br>
+   <center><input type="submit" value="submit" id="button"></center>
+</form>
+
+<button style="background-color:red"><a href="{% url 'without_noopener' %}">See Database</button>
+<button style="background-color:lightgreen"><a href="{% url 'noopener' %}">With Noopener</button>
+{% comment %} <div id="links">
+{% if final %}
+{{final}}
+{% endif %}
+</div>
+<br>
+{% if final %}
+<div id="openlinks">
+    <h3>Open given links from here:</h3><br>
+{% autoescape off %}
+    <b>{{ final }}</b>
+{% endautoescape %}
+</div>
+{% endif %} {% endcomment %}
+</body>
+</html>
